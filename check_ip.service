@@ -1,0 +1,13 @@
+[Unit]
+Description=Run script to update Discord with IP after network is online
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/orin/discord-webhook/check_ip.py
+User=orin
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
