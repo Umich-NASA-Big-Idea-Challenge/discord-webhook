@@ -8,6 +8,7 @@ Type=simple
 ExecStart=/usr/bin/python3 /home/orin/discord-webhook/check_ip.py
 User=orin
 Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target

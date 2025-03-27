@@ -1,13 +1,20 @@
 import json
 import socket
+import sys
+
+
 from discord_message import Message
 
 FILE = '/home/orin/discord-webhook/data.json'
 
 def get_ip_address():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    return s.getsockname()[0]
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        return s.getsockname()[0]
+    except Exception as e:
+        print(f"Error getting IP address: {e}")
+        sys.exit(1)  # Exit with error code 1
 
 
 def check_ip():
